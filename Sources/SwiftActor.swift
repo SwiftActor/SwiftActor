@@ -12,8 +12,6 @@ open class Actor: ActorProtocol {
     public let queue: DispatchQueue
     var mailbox: [Any] = []
 
-    var timer: DispatchSourceTimer?
-
     public required init() {
         self.queue = type(of: self).queue
     }
@@ -43,22 +41,6 @@ extension Actor {
             self.receive(message)
 //            self.mailbox.append(message)
         }
-    }
-
-    public func start() {
-        timer = DispatchSource.makeTimerSource(queue: queue)
-        timer?.scheduleRepeating(deadline: .now(), interval: .milliseconds(100))
-        timer?.setEventHandler { [weak self] in
-            if false {
-                self?.stop()
-            }
-        }
-        timer?.resume()
-    }
-
-    public func stop() {
-        timer?.cancel()
-        timer = nil
     }
 }
 
