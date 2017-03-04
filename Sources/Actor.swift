@@ -20,7 +20,7 @@ open class Actor: ActorProtocol {
     }
 
     class var queue: DispatchQueue {
-        return DispatchQueue(label: "")
+        return DispatchQueue(label: String(describing: type(of: self)))
     }
 
     public func preStart() {
