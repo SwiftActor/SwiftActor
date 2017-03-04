@@ -3,8 +3,24 @@ import XCTest
 
 class SwiftActorTests: XCTestCase {
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let expectation = self.expectation(description: "")
+
+        class FooBar: Actor {
+            var expectation: XCTestExpectation?
+
+            open override func receive(_ message: Any) {
+                print("received \(message)")
+                expectation?.fulfill()
+            }
+        }
+
+        let system = ActorSystem(name: "test")
+        let ref = system.actorOf(FooBar.self)
+
+        ref.actor.expectation = expectation
+        ref.tell("hogehoge")
+
+        waitForExpectations(timeout: 1) { _ in }
     }
 
 
