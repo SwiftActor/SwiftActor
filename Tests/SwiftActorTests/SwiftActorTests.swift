@@ -8,16 +8,28 @@ class SwiftActorTests: XCTestCase {
         class FooBar: Actor {
             var expectation: XCTestExpectation?
 
+            required init(actorRefProvider: ActorRefProvider) {
+                super.init(actorRefProvider: actorRefProvider)
+                actorRefProvider.actorOf(Baz.self, name: "baz")
+            }
+
             open override func receive(_ message: Any) {
-                print("received \(message)")
+                print("parent \(message)")
+                actorRefProvider.actorFor(name: "baz")?.tell(message)
                 expectation?.fulfill()
             }
         }
 
-        let system = ActorSystem(name: "test")
-        let ref = system.actorOf(FooBar.self)
+        class Baz: Actor {
+            open override func receive(_ message: Any) {
+                print("child")
+            }
+        }
 
-        ref.actor.expectation = expectation
+        let system = ActorSystem(name: "test")
+        let ref = system.actorOf(FooBar.self, name: "foobar")
+
+        (ref.actor as! FooBar).expectation = expectation
         ref.tell("hogehoge")
 
         waitForExpectations(timeout: 1) { _ in }

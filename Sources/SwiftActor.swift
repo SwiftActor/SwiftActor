@@ -8,10 +8,12 @@ public protocol ActorProtocol: class {
 }
 
 open class Actor: ActorProtocol {
+    public let actorRefProvider: ActorRefProvider
     public let queue: DispatchQueue
     var mailbox: [Any] = []
 
-    public required init() {
+    public required init(actorRefProvider: ActorRefProvider) {
+        self.actorRefProvider = actorRefProvider
         self.queue = type(of: self).queue
     }
 
@@ -39,10 +41,10 @@ extension Actor {
     }
 }
 
-public class ActorRef<T: Actor> {
-    let actor: T
+public class ActorRef {
+    let actor: Actor
 
-    public init(actor: T) {
+    public init(actor: Actor) {
         self.actor = actor
     }
 
@@ -51,16 +53,29 @@ public class ActorRef<T: Actor> {
     }
 }
 
-public class ActorSystem {
-    var name: String
+public protocol ActorRefProvider {
+    @discardableResult
+    func actorOf(_ type: Actor.Type, name: String) -> ActorRef
+    func actorFor(name: String) -> ActorRef?
+}
+
+public class ActorSystem: ActorRefProvider {
+    let name: String
+
+    var actors: [String: ActorRef] = [:]
 
     public init(name: String) {
         self.name = name
     }
 
-    public func actorOf<T: Actor>(_ type: T.Type) -> ActorRef<T> {
-        let actor = type.init()
-        return ActorRef(actor: actor)
+    public func actorOf(_ type: Actor.Type, name: String) -> ActorRef {
+        let actor = type.init(actorRefProvider: self)
+        let ref = ActorRef(actor: actor)
+        actors[name] = ref
+        return ref
+    }
+
+    public func actorFor(name: String) -> ActorRef? {
+        return actors[name]
     }
 }
-
