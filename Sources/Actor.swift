@@ -23,7 +23,7 @@ open class Actor: ActorProtocol {
         return DispatchQueue(label: String(describing: type(of: self)))
     }
 
-    public func preStart() {
+    open func preStart() {
         // no-op
     }
 
