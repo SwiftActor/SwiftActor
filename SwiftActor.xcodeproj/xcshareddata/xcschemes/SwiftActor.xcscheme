@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_16"
+               BlueprintIdentifier = "OBJ_20"
                BuildableName = "SwiftActor.framework"
                BlueprintName = "SwiftActor"
                ReferencedContainer = "container:SwiftActor.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_23"
+               BlueprintIdentifier = "OBJ_31"
                BuildableName = "SwiftActorTests.xctest"
                BlueprintName = "SwiftActorTests"
                ReferencedContainer = "container:SwiftActor.xcodeproj">
@@ -55,7 +55,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_16"
+            BlueprintIdentifier = "OBJ_20"
             BuildableName = "SwiftActor.framework"
             BlueprintName = "SwiftActor"
             ReferencedContainer = "container:SwiftActor.xcodeproj">

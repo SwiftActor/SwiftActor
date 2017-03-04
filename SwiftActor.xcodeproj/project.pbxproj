@@ -7,70 +7,78 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		OBJ_21 /* SwiftActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* SwiftActor.swift */; };
-		OBJ_28 /* SwiftActorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SwiftActorTests.swift */; };
-		OBJ_30 /* SwiftActor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* SwiftActor.framework */; };
+		OBJ_25 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Actor.swift */; };
+		OBJ_26 /* ActorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* ActorContext.swift */; };
+		OBJ_27 /* ActorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* ActorProtocol.swift */; };
+		OBJ_28 /* ActorRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* ActorRef.swift */; };
+		OBJ_29 /* ActorSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* ActorSystem.swift */; };
+		OBJ_36 /* SwiftActorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* SwiftActorTests.swift */; };
+		OBJ_38 /* SwiftActor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* SwiftActor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CD4991A21E6A59E600BC14C8 /* PBXContainerItemProxy */ = {
+		CD012B811E6AACFA00524ABC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_16;
+			remoteGlobalIDString = OBJ_20;
 			remoteInfo = SwiftActor;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		OBJ_12 /* SwiftActorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftActorTests.swift; sourceTree = "<group>"; };
-		OBJ_14 /* SwiftActor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftActor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_15 /* SwiftActorTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = SwiftActorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_10 /* ActorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorContext.swift; sourceTree = "<group>"; };
+		OBJ_11 /* ActorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorProtocol.swift; sourceTree = "<group>"; };
+		OBJ_12 /* ActorRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorRef.swift; sourceTree = "<group>"; };
+		OBJ_13 /* ActorSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorSystem.swift; sourceTree = "<group>"; };
+		OBJ_16 /* SwiftActorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftActorTests.swift; sourceTree = "<group>"; };
+		OBJ_18 /* SwiftActor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftActor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_19 /* SwiftActorTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = SwiftActorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* SwiftActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftActor.swift; sourceTree = "<group>"; };
+		OBJ_9 /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_22 /* Frameworks */ = {
+		OBJ_30 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_29 /* Frameworks */ = {
+		OBJ_37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_30 /* SwiftActor.framework in Frameworks */,
+				OBJ_38 /* SwiftActor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_10 /* Tests */ = {
+		OBJ_14 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_11 /* SwiftActorTests */,
+				OBJ_15 /* SwiftActorTests */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		OBJ_11 /* SwiftActorTests */ = {
+		OBJ_15 /* SwiftActorTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_12 /* SwiftActorTests.swift */,
+				OBJ_16 /* SwiftActorTests.swift */,
 			);
 			name = SwiftActorTests;
 			path = Tests/SwiftActorTests;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_13 /* Products */ = {
+		OBJ_17 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_14 /* SwiftActor.framework */,
-				OBJ_15 /* SwiftActorTests.xctest */,
+				OBJ_18 /* SwiftActor.framework */,
+				OBJ_19 /* SwiftActorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -80,8 +88,8 @@
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
-				OBJ_10 /* Tests */,
-				OBJ_13 /* Products */,
+				OBJ_14 /* Tests */,
+				OBJ_17 /* Products */,
 			);
 			name = "";
 			sourceTree = "<group>";
@@ -97,7 +105,11 @@
 		OBJ_8 /* SwiftActor */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* SwiftActor.swift */,
+				OBJ_9 /* Actor.swift */,
+				OBJ_10 /* ActorContext.swift */,
+				OBJ_11 /* ActorProtocol.swift */,
+				OBJ_12 /* ActorRef.swift */,
+				OBJ_13 /* ActorSystem.swift */,
 			);
 			name = SwiftActor;
 			path = Sources;
@@ -106,12 +118,12 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		OBJ_16 /* SwiftActor */ = {
+		OBJ_20 /* SwiftActor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_17 /* Build configuration list for PBXNativeTarget "SwiftActor" */;
+			buildConfigurationList = OBJ_21 /* Build configuration list for PBXNativeTarget "SwiftActor" */;
 			buildPhases = (
-				OBJ_20 /* Sources */,
-				OBJ_22 /* Frameworks */,
+				OBJ_24 /* Sources */,
+				OBJ_30 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -119,24 +131,24 @@
 			);
 			name = SwiftActor;
 			productName = SwiftActor;
-			productReference = OBJ_14 /* SwiftActor.framework */;
+			productReference = OBJ_18 /* SwiftActor.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		OBJ_23 /* SwiftActorTests */ = {
+		OBJ_31 /* SwiftActorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_24 /* Build configuration list for PBXNativeTarget "SwiftActorTests" */;
+			buildConfigurationList = OBJ_32 /* Build configuration list for PBXNativeTarget "SwiftActorTests" */;
 			buildPhases = (
-				OBJ_27 /* Sources */,
-				OBJ_29 /* Frameworks */,
+				OBJ_35 /* Sources */,
+				OBJ_37 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				OBJ_31 /* PBXTargetDependency */,
+				OBJ_39 /* PBXTargetDependency */,
 			);
 			name = SwiftActorTests;
 			productName = SwiftActorTests;
-			productReference = OBJ_15 /* SwiftActorTests.xctest */;
+			productReference = OBJ_19 /* SwiftActorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -155,45 +167,49 @@
 				en,
 			);
 			mainGroup = OBJ_5 /*  */;
-			productRefGroup = OBJ_13 /* Products */;
+			productRefGroup = OBJ_17 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				OBJ_16 /* SwiftActor */,
-				OBJ_23 /* SwiftActorTests */,
+				OBJ_20 /* SwiftActor */,
+				OBJ_31 /* SwiftActorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_20 /* Sources */ = {
+		OBJ_24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_21 /* SwiftActor.swift in Sources */,
+				OBJ_25 /* Actor.swift in Sources */,
+				OBJ_26 /* ActorContext.swift in Sources */,
+				OBJ_27 /* ActorProtocol.swift in Sources */,
+				OBJ_28 /* ActorRef.swift in Sources */,
+				OBJ_29 /* ActorSystem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_27 /* Sources */ = {
+		OBJ_35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_28 /* SwiftActorTests.swift in Sources */,
+				OBJ_36 /* SwiftActorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_31 /* PBXTargetDependency */ = {
+		OBJ_39 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_16 /* SwiftActor */;
-			targetProxy = CD4991A21E6A59E600BC14C8 /* PBXContainerItemProxy */;
+			target = OBJ_20 /* SwiftActor */;
+			targetProxy = CD012B811E6AACFA00524ABC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		OBJ_18 /* Debug */ = {
+		OBJ_22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -213,7 +229,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_19 /* Release */ = {
+		OBJ_23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -230,40 +246,6 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				TARGET_NAME = SwiftActor;
-			};
-			name = Release;
-		};
-		OBJ_25 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = SwiftActor.xcodeproj/SwiftActorTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				TARGET_NAME = SwiftActorTests;
-			};
-			name = Debug;
-		};
-		OBJ_26 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = SwiftActor.xcodeproj/SwiftActorTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				TARGET_NAME = SwiftActorTests;
 			};
 			name = Release;
 		};
@@ -289,6 +271,40 @@
 			};
 			name = Debug;
 		};
+		OBJ_33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = SwiftActor.xcodeproj/SwiftActorTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = SwiftActorTests;
+			};
+			name = Debug;
+		};
+		OBJ_34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = SwiftActor.xcodeproj/SwiftActorTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = SwiftActorTests;
+			};
+			name = Release;
+		};
 		OBJ_4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -312,15 +328,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		OBJ_17 /* Build configuration list for PBXNativeTarget "SwiftActor" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_18 /* Debug */,
-				OBJ_19 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		OBJ_2 /* Build configuration list for PBXProject "SwiftActor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -330,11 +337,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_24 /* Build configuration list for PBXNativeTarget "SwiftActorTests" */ = {
+		OBJ_21 /* Build configuration list for PBXNativeTarget "SwiftActor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_25 /* Debug */,
-				OBJ_26 /* Release */,
+				OBJ_22 /* Debug */,
+				OBJ_23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_32 /* Build configuration list for PBXNativeTarget "SwiftActorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_33 /* Debug */,
+				OBJ_34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
