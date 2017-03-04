@@ -5,7 +5,6 @@ public protocol ActorProtocol: class {
 
     func tell(_ message: Any)
     func receive(_ message: Any)
-    func unhandled(_ message: Any)
 }
 
 open class Actor: ActorProtocol {
@@ -21,10 +20,6 @@ open class Actor: ActorProtocol {
     }
 
     open func receive(_ message: Any) {
-        // no-op
-    }
-
-    open func unhandled(_ message: Any) {
         // no-op
     }
 }
