@@ -135,6 +135,7 @@ public class ActorSystem {
         self.name = name
     }
 
+    @discardableResult
     public func actorOf(_ type: Actor.Type, name: String) -> ActorRef {
         lock.lock()
         defer { lock.unlock() }
