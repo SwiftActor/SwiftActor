@@ -1,6 +1,6 @@
 public class ActorRef {
-    let actor: Actor
-    let name: String
+    public let actor: Actor
+    public let name: String
 
     public init(actor: Actor, name: String) {
         self.actor = actor

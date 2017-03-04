@@ -1,11 +1,11 @@
 import Foundation
 
 public class ActorSystem {
-    let name: String
+    public let name: String
 
-    var actors: [String: ActorRef] = [:]
+    private var actors: [String: ActorRef] = [:]
 
-    let lock = NSRecursiveLock()
+    private let lock = NSRecursiveLock()
 
     public init(name: String) {
         self.name = name

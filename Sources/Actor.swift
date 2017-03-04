@@ -7,9 +7,9 @@ open class Actor: ActorProtocol {
 
     public internal(set) var selfRef: ActorRef!
 
-    var mailbox: [Any] = []
+    private var mailbox: [Any] = []
 
-    var timer: DispatchSourceTimer?
+    private var timer: DispatchSourceTimer?
 
     public required init(context: ActorContext) {
         self.context = context
