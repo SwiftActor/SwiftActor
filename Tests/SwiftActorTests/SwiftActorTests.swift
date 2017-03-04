@@ -5,20 +5,25 @@ class SwiftActorTests: XCTestCase {
     func testExample() {
         let expectation = self.expectation(description: "")
 
+        struct StopMessage {}
+
         class FooBar: Actor {
             open override func preStart() {
-                actorRefProvider.actorOf(Baz.self, name: "baz")
+                context.actorOf(Baz.self, name: "baz")
             }
 
             open override func receive(_ message: Any) {
                 print("parent \(message)")
-                actorRefProvider.actorFor(name: "baz")?.tell(message)
+                context.actorOf(Baz.self, name: "baz").tell(message)
+
+                if message is StopMessage {
+                    context.stop(actor: selfRef)
+                }
             }
 
             open override func postStop() {
-                if let baz = actorRefProvider.actorFor(name: "baz") {
-                    actorRefProvider.stop(actor: baz)
-                }
+                let baz = context.actorOf(Baz.self, name: "baz")
+                context.stop(actor: baz)
             }
         }
 
@@ -27,6 +32,9 @@ class SwiftActorTests: XCTestCase {
 
             open override func receive(_ message: Any) {
                 print("child")
+            }
+
+            open override func postStop() {
                 expectation?.fulfill()
             }
         }
@@ -34,10 +42,13 @@ class SwiftActorTests: XCTestCase {
         let system = ActorSystem(name: "test")
         let ref = system.actorOf(FooBar.self, name: "foobar")
 
-        (system.actorFor(name: "baz")?.actor as! Baz).expectation = expectation
-        ref.tell("hogehoge")
+        (system.actorOf(Baz.self, name: "baz").actor as! Baz).expectation = expectation
+        for i in 0..<10000 {
+            ref.tell("hogehoge \(i)")
+        }
+        ref.tell(StopMessage())
 
-        waitForExpectations(timeout: 1) { _ in }
+        waitForExpectations(timeout: 10) { _ in }
     }
 
 

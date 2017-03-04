@@ -1,3 +1,4 @@
+import Foundation
 import Dispatch
 
 public protocol ActorProtocol: class {
@@ -11,14 +12,17 @@ public protocol ActorProtocol: class {
 }
 
 open class Actor: ActorProtocol {
-    public let actorRefProvider: ActorRefProvider
+    public let context: ActorContext
     public let queue: DispatchQueue
+
+    public fileprivate(set) var selfRef: ActorRef!
+
     var mailbox: [Any] = []
 
     var timer: DispatchSourceTimer?
 
-    public required init(actorRefProvider: ActorRefProvider) {
-        self.actorRefProvider = actorRefProvider
+    public required init(context: ActorContext) {
+        self.context = context
         self.queue = type(of: self).queue
 
         preStart()
@@ -43,7 +47,7 @@ open class Actor: ActorProtocol {
 
     internal func start() {
         timer = DispatchSource.makeTimerSource(queue: queue)
-        timer?.scheduleRepeating(deadline: .now(), interval: .milliseconds(100))
+        timer?.scheduleRepeating(deadline: .now(), interval: .microseconds(1))
         timer?.setEventHandler { [unowned self] in
             if !self.mailbox.isEmpty {
                 let message = self.mailbox.removeFirst()
@@ -80,6 +84,8 @@ public class ActorRef {
     public init(actor: Actor, name: String) {
         self.actor = actor
         self.name = name
+
+        actor.selfRef = self
     }
 
     public func tell(_ message: Any) {
@@ -87,36 +93,74 @@ public class ActorRef {
     }
 }
 
-public protocol ActorRefProvider {
+public protocol ActorContext {
+    var system: ActorSystem { get }
+
     @discardableResult
     func actorOf(_ type: Actor.Type, name: String) -> ActorRef
     func actorFor(name: String) -> ActorRef?
+
     func stop(actor: ActorRef)
 }
 
-public class ActorSystem: ActorRefProvider {
+internal final class ActorContextImpl: ActorContext {
+    let system: ActorSystem
+
+    init(system: ActorSystem) {
+        self.system = system
+    }
+
+    @discardableResult
+    func actorOf(_ type: Actor.Type, name: String) -> ActorRef {
+        return system.actorOf(type, name: name)
+    }
+
+    func actorFor(name: String) -> ActorRef? {
+        return system.actorFor(name: name)
+    }
+
+    func stop(actor: ActorRef) {
+        system.stop(actor: actor)
+    }
+}
+
+public class ActorSystem {
     let name: String
 
     var actors: [String: ActorRef] = [:]
+
+    let lock = NSRecursiveLock()
 
     public init(name: String) {
         self.name = name
     }
 
     public func actorOf(_ type: Actor.Type, name: String) -> ActorRef {
-        let actor = type.init(actorRefProvider: self)
-        let ref = ActorRef(actor: actor, name: name)
-        actors[name] = ref
-        return ref
+        lock.lock()
+        defer { lock.unlock() }
+
+        if let ref = actors[name] {
+            return ref
+        } else {
+            let context = ActorContextImpl(system: self)
+            let actor = type.init(context: context)
+            let ref = ActorRef(actor: actor, name: name)
+            actors[name] = ref
+            return ref
+        }
     }
 
     public func actorFor(name: String) -> ActorRef? {
+        lock.lock()
+        defer { lock.unlock() }
         return actors[name]
     }
 
     public func stop(actor: ActorRef) {
         actor.actor.stop()
         actor.actor.postStop()
+        lock.lock()
         actors.removeValue(forKey: actor.name)
+        lock.unlock()
     }
 }
